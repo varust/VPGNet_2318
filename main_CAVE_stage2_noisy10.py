@@ -146,54 +146,9 @@ def mkdir(path):
     else:
         print("---  There is " + path + " !  ---")
 
-# load_dict = torch.load(opt.save_folder+"_epoch_{}.pth".format(143))
-# model.load_state_dict(load_dict['param'])
-# opt.lr = 0.00005
 
 def train(epoch, optimizer, scheduler):
-    epoch_loss = 0
-    global current_step
-
-
-
-    model.train()
-    for iteration, batch in enumerate(training_data_loader, 1):
-        # with torch.autograd.set_detect_anomaly(True):
-
-        Y, Z, X = batch[0].float().cuda(), batch[1].float().cuda(), batch[2].float().cuda()
-
-        optimizer.zero_grad()
-        Y = add_gaussian_noise(Y, 10)
-        Z = add_gaussian_noise(Z, 10)
-
-        HX = model(Y, Z, X)
-        # HX = HX[0]
-        # if iteration % 2000 == 0:
-        #     print(los[1])
-
-        
-        # alpha = opt.alpha
-
-        loss = criterion(HX, X)
-        epoch_loss += loss.detach().cpu().item()
-
-        tb_logger.add_scalar('total_loss', loss.detach().cpu().item(), current_step)
-        current_step += 1
-
-        loss.backward()
-
-        optimizer.step()
-        
-
-        if iteration % 100 == 0:
-
-            print("===> Epoch[{}]({}/{}): Loss: {:.4f}".format(epoch, iteration, len(training_data_loader), loss.detach().cpu().item()))
-
-        
-        
-    print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
-    
-    return epoch_loss / len(training_data_loader)
+    return epoch 
 
 def test():
     avg_psnr = 0
@@ -259,4 +214,3 @@ else:
         load_dict = torch.load(opt.save_folder + "_epoch_{}.pth".format(i))
         model.load_state_dict(load_dict['param'])
         test()
-    # test()
