@@ -8,3 +8,5 @@ Download trained models from https://drive.google.com/drive/folders/1GShrBWDkWiE
 ## Acknowledgement
 We thank the authors for their great work.
 https://github.com/qingma2016/3DT-Net/tree/main
+
+More detail will be released soon
