@@ -1,4 +1,4 @@
-# VPRNet
+# VPGNet
 ## Prepare data
 Download prepared data from https://drive.google.com/drive/folders/1gMPdpt0Yshc5VfSf2Dd1QYUkfbMSUGLl?usp=sharing
 ## TrainedNet
